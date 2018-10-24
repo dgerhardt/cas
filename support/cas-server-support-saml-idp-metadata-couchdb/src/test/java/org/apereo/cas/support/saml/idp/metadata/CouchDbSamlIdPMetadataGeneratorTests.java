@@ -1,6 +1,5 @@
 package org.apereo.cas.support.saml.idp.metadata;
 
-import org.apereo.cas.category.CouchDbCategory;
 import org.apereo.cas.config.CasCouchDbCoreConfiguration;
 import org.apereo.cas.config.CoreSamlConfiguration;
 import org.apereo.cas.config.CouchDbSamlIdPFactoryConfiguration;
@@ -15,9 +14,9 @@ import org.apereo.cas.support.saml.idp.metadata.locator.SamlIdPMetadataLocator;
 
 import org.junit.ClassRule;
 import org.junit.Rule;
-import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -54,7 +53,7 @@ import static org.junit.Assert.*;
     "cas.authn.samlIdp.metadata.couchDb.username=cas",
     "cas.authn.samlIdp.metadata.couchdb.password=password"
 })
-@Category(CouchDbCategory.class)
+@Tag("couchdb")
 public class CouchDbSamlIdPMetadataGeneratorTests {
     @ClassRule
     public static final SpringClassRule SPRING_CLASS_RULE = new SpringClassRule();
