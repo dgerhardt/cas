@@ -23,19 +23,18 @@ import org.apereo.cas.config.support.CasWebApplicationServiceFactoryConfiguratio
 import org.apereo.cas.logout.config.CasCoreLogoutConfiguration;
 
 import org.junit.experimental.categories.Category;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.autoconfigure.RefreshAutoConfiguration;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
- * This is {@link AbstractIgniteTicketRegistryTests}.
+ * Unit test for {@link IgniteTicketRegistry}.
  *
- * @author Misagh Moayyed
- * @since 5.3.0
+ * @author Scott Battaglia
+ * @author Timur Duehr timur.duehr@nccgroup.trust
+ * @since 3.0.0
  */
 @Category(IgniteCategory.class)
 @SpringBootTest(classes = {
@@ -68,16 +67,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
     "cas.ticket.registry.ignite.ticketsCache.cacheMode=REPLICATED",
     "cas.ticket.registry.ignite.igniteAddress[0]=localhost:47500"
 })
-@ExtendWith(SpringExtension.class)
-public abstract class AbstractIgniteTicketRegistryTests extends BaseTicketRegistryTests {
-
+public class IgniteTicketRegistryTests extends BaseTicketRegistryTests {
     @Autowired
     @Qualifier("ticketRegistry")
     private TicketRegistry ticketRegistry;
-
-    public AbstractIgniteTicketRegistryTests(final boolean useEncryption) {
-        super(useEncryption);
-    }
 
     @Override
     protected TicketRegistry getNewTicketRegistry() {
