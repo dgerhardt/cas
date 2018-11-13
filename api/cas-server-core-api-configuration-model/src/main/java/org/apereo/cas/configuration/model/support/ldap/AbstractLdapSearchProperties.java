@@ -24,6 +24,12 @@ public abstract class AbstractLdapSearchProperties extends AbstractLdapPropertie
     protected String searchFilter;
 
     /**
+     * Whether multiple entries are allowed when resolving.
+     * The first entry is used in this case.
+     */
+    protected boolean allowMultipleEntries = false;
+
+    /**
      * Whether subtree searching is allowed.
      */
     private boolean subtreeSearch = true;
